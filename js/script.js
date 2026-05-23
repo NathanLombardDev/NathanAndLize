@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        Countdown Timer
        ========================================================================== */
-    // Set wedding date here (Year, Month (0-indexed so 9=Oct), Day, Hour, Min)
-    const weddingDate = new Date(2026, 9, 24, 15, 0, 0).getTime();
+    // Set wedding date here (Year, Month (0-indexed so 14=November), Day, Hour, Min)
+    const weddingDate = new Date(2026, 10, 14, 15, 0, 0).getTime();
 
     const updateCountdown = () => {
         const now = new Date().getTime();
