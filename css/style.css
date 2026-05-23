@@ -3,17 +3,17 @@
    ========================================================================== */
 :root {
     /* Color Palette */
-    --clr-bg: #FDFBF7;
-    /* Soft off-white cream */
-    --clr-text: #2C3E50;
-    /* Deep navy/charcoal for text */
-    --clr-text-light: #596a7d;
-    /* Lighter text for paragraphs */
-    --clr-accent: #C6A6A0;
-    /* Dusty rose / soft blush */
-    --clr-accent-hover: #b5928a;
+    --clr-bg: #D2CBC1;
+    /* Light warm neutral background */
+    --clr-text: #222217;
+    /* Deep charcoal for primary text */
+    --clr-text-light: #858666;
+    /* Muted olive for secondary text */
+    --clr-accent: #4D5038;
+    /* Olive/earth accent */
+    --clr-accent-hover: #858666;
     --clr-gold: #D4AF37;
-    /* Subtle gold accents */
+    /* Keep subtle gold accents */
     --clr-white: #ffffff;
 
     /* Typography */
