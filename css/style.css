@@ -225,7 +225,8 @@ a {
     justify-content: center;
     text-align: center;
     position: relative;
-    background: url('../images/wedding.png') center center / cover no-repeat;
+    background: url('../images/wedding.jpg') center 60% / cover no-repeat;
+    background-color: #111;
     overflow: hidden;
 }
 
@@ -714,6 +715,11 @@ select {
 @media screen and (max-width: 768px) {
     .menu-toggle {
         display: flex;
+    }
+
+    .hero {
+        background-size: 200%;
+        background-position: center 60%;
     }
 
     .nav-links {
