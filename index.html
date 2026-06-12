@@ -13,7 +13,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@400;700&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -41,9 +41,60 @@
     <!-- Hero Section -->
     <section id="hero" class="hero fade-in-section">
         <div class="hero-content">
-            <p class="subtitle">WE ARE GETTING MARRIED</p>
-            <h1 class="title">NATHAN & LIZE</h1>
-            <p class="date">November 14th, 2026 • Cape Town, South Africa</p>
+            <h1 class="title">NATHAN<br><span class="ampersand">&</span> LIZE</h1>
+            <p class="date">14 . 11 . 2026</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Our Story Section -->
+    <section id="story" class="story fade-in-section">
+        <div class="story-bg">
+            <img src="./images/story.png" alt="Zandvliet Wine Estate">
+        </div>
+        <div class="story-overlay">
+            <div class="story-left">
+                <h2>OUR<br>LOVE<br>STORY</h2>
+            </div>
+            <div class="story-right">
+                <p>Write a paragraph that tells your story as a couple. You can include details like how you met, your journey together, and what makes your relationship unique.</p>
+                <p>This is your chance to share your personality and connect with your guests, giving them a glimpse into your love story and what this special day means to you.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Event Details Section -->
+    <section id="details" class="details fade-in-section">
+        <div class="container">
+            <div class="details-layout">
+                <div class="details-left">
+                    <h2 class="details-title">DETAILS</h2>
+                    <div class="details-image">
+                        <img src="./images/details.png" alt="Zandvliet Wine Estate">
+                    </div>
+                </div>
+                <div class="details-right">
+                    <div class="details-block">
+                        <h3>Accommodation</h3>
+                        <p>The accommodation is booked and paid for for the Friday and Saturday night</p>
+                    </div>
+                    <div class="details-block">
+                        <h3>Ceremony Venue</h3>
+                        <p>The ceremony will take place at 17:00,<br>Zandvliet Wine Estate,<br>Ashton 6715<br>Formal Attire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+     <!-- Countdown Section -->
+    <section class="countdown-section fade-in-section">
+        <div class="container">
             <div class="countdown-container">
                 <div class="countdown-item"><span id="days">00</span><small>Days</small></div>
                 <div class="countdown-item"><span id="hours">00</span><small>Hours</small></div>
@@ -52,68 +103,9 @@
             </div>
             <a href="#rsvp" class="cta-button">RSVP Now</a>
         </div>
-        <!-- Decorative subtle background elements defined in CSS -->
     </section>
 
-    <!-- Our Story Section -->
-    <section id="story" class="story fade-in-section">
-        <div class="container">
-            <h2 class="section-title">Our Story</h2>
-            <div class="story-grid">
-                <div class="story-image-placeholder">
-                    <img src="./images/nl.jpg" alt="Lize & Nathan">
-                </div>
-                <div class="story-text">
-                    <h3>How We Met</h3>
-                    <p>It all started in a small coffee shop on a rainy afternoon. James offered Emma his umbrella, and
-                        what began as a shared walk to the train station blossomed into a lifetime of adventures.</p>
-                    <p>Over the years, we've traveled the world, adopted a mischievous golden retriever named Barnaby,
-                        and realized that every moment is better when we're together.</p>
-                    <h3>The Proposal</h3>
-                    <p>On a weekend getaway to the mountains, just as the sun was setting behind the peaks, James got
-                        down on one knee. It was the easiest "Yes" Emma ever said.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Details Section -->
-    <section id="details" class="details fade-in-section">
-        <div class="container">
-            <h2 class="section-title">Event Details</h2>
-            <p class="section-subtitle">Everything you need to know for our special day.</p>
-
-            <div class="details-cards">
-                <!-- Ceremony -->
-                <div class="card glass-card">
-                    <div class="card-icon">💍</div>
-                    <h3>Ceremony</h3>
-                    <p class="time">3:00 PM</p>
-                    <p class="location-name">Zandvliet Wine Estate</p>
-                    <p class="location-address">Robertson, Western Cape<br>South Africa</p>
-                    <a href="https://maps.google.com?q=Zandvliet+Wine+Estate+Robertson" target="_blank" class="map-link">View Map</a>
-                </div>
-
-                <!-- Reception -->
-                <div class="card glass-card">
-                    <div class="card-icon">🥂</div>
-                    <h3>Reception</h3>
-                    <p class="time">5:30 PM - Late</p>
-                    <p class="location-name">Zandvliet Wine Estate</p>
-                    <p class="location-address">Robertson, Western Cape<br>South Africa</p>
-                    <a href="https://maps.google.com?q=Zandvliet+Wine+Estate+Robertson" target="_blank" class="map-link">View Map</a>
-                </div>
-
-                <!-- Accommodation -->
-                <div class="card glass-card">
-                    <div class="card-icon">🏨</div>
-                    <h3>Accommodation</h3>
-                    <p class="location-address">We have reserved the guesthouse on the property for our guests. Please specify any additional needs or requests.</p>
-                    <a href="https://maps.google.com" target="_blank" class="map-link">View Map</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="section-divider"></div>
 
     <!-- RSVP Section -->
     <section id="rsvp" class="rsvp fade-in-section">
