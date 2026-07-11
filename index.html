@@ -17,6 +17,32 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtWAhzJuEMHr34puQF1VfCfDxAiU7ZPBI",
+            authDomain: "nlwedding-b4303.firebaseapp.com",
+            databaseURL: "https://nlwedding-b4303-default-rtdb.firebaseio.com",
+            projectId: "nlwedding-b4303",
+            storageBucket: "nlwedding-b4303.firebasestorage.app",
+            messagingSenderId: "644564566334",
+            appId: "1:644564566334:web:d12fd3d5adc40e6e1d2c6f",
+            measurementId: "G-2Z6M23T345"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Make available globally for script.js
+        window.firebaseDB = db;
+        window.firebaseRef = ref;
+        window.firebaseOnValue = onValue;
+        window.firebaseUpdate = update;
+    </script>
 </head>
 
 <body>
@@ -107,6 +133,27 @@
 
     <div class="section-divider"></div>
 
+    <!-- Registry Section -->
+    <section id="registry" class="registry fade-in-section">
+        <div class="container">
+            <h2 class="section-title">Gift Registry</h2>
+            <p class="section-subtitle">Your presence is the greatest gift, but if you'd like to bless us with something special, here are a few ideas.</p>
+
+            <div id="registry-list" class="registry-grid">
+                <!-- Items loaded from Firebase -->
+                <p class="registry-loading">Loading gifts...</p>
+            </div>
+
+            <div class="honeymoon-fund">
+                <h3>Honeymoon Fund</h3>
+                <p>If you'd prefer not to choose from the list above, you're welcome to contribute to our honeymoon fund instead. Every bit helps us create unforgettable memories together.</p>
+                <a href="#" class="cta-button" id="honeymoon-btn">Contribute to Honeymoon</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- RSVP Section -->
     <section id="rsvp" class="rsvp fade-in-section">
         <div class="container rsvp-container">
@@ -166,6 +213,18 @@
             </div>
         </div>
     </section>
+
+    <!-- Claim Confirmation Modal -->
+    <div class="claim-modal" id="claim-modal">
+        <div class="claim-modal-content">
+            <h3>Claim this gift?</h3>
+            <p id="claim-modal-text">Are you sure you want to claim this item?</p>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="claim-cancel">Cancel</button>
+                <button class="confirm-btn" id="claim-confirm">Yes, I'll get this</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">

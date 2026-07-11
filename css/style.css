@@ -451,12 +451,153 @@ a {
    ========================================================================== */
 .registry {
     padding: var(--section-pad);
-    background-color: #fff;
+    background-color: var(--clr-bg);
 }
 
-.registry-btn {
-    margin-top: 1rem;
-    font-weight: 500;
+.registry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.registry-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    position: relative;
+}
+
+.registry-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.registry-item h4 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--clr-text);
+}
+
+.registry-item p {
+    font-size: 0.9rem;
+    color: var(--clr-text-light);
+    margin-bottom: 1rem;
+}
+
+.registry-item .claim-btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--clr-accent);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-body);
+}
+
+.registry-item .claim-btn:hover {
+    background-color: var(--clr-text);
+}
+
+.registry-item.claimed {
+    display: none;
+}
+
+.registry-loading {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: var(--clr-text-light);
+    font-style: italic;
+}
+
+.honeymoon-fund {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+}
+
+.honeymoon-fund h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--clr-text);
+}
+
+.honeymoon-fund p {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Claimed confirmation modal */
+.claim-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.claim-modal.active {
+    display: flex;
+}
+
+.claim-modal-content {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.claim-modal-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.claim-modal-content p {
+    margin-bottom: 1.5rem;
+}
+
+.claim-modal-content .modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.claim-modal-content .modal-actions button {
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.claim-modal-content .modal-actions .confirm-btn {
+    background-color: var(--clr-accent);
+    color: #fff;
+}
+
+.claim-modal-content .modal-actions .cancel-btn {
+    background-color: transparent;
+    border: 1px solid var(--clr-text-light);
+    color: var(--clr-text);
 }
 
 /* ==========================================================================
