@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Registry | Nathan & Lize</title>
+
+    <meta name="description" content="Wedding gift registry for Nathan & Lize.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtWAhzJuEMHr34puQF1VfCfDxAiU7ZPBI",
+            authDomain: "nlwedding-b4303.firebaseapp.com",
+            databaseURL: "https://nlwedding-b4303-default-rtdb.firebaseio.com",
+            projectId: "nlwedding-b4303",
+            storageBucket: "nlwedding-b4303.firebasestorage.app",
+            messagingSenderId: "644564566334",
+            appId: "1:644564566334:web:d12fd3d5adc40e6e1d2c6f",
+            measurementId: "G-2Z6M23T345"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        window.firebaseDB = db;
+        window.firebaseRef = ref;
+        window.firebaseOnValue = onValue;
+        window.firebaseUpdate = update;
+    </script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">N & L</a>
+            <ul class="nav-links">
+                <li><a href="index.html#story">Our Story</a></li>
+                <li><a href="index.html#details">Details</a></li>
+                <li><a href="index.html#rsvp" class="nav-btn">RSVP</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registry Page Content -->
+    <section class="registry registry-page">
+        <div class="container">
+            <h2 class="section-title">Gift Registry</h2>
+            <p class="section-subtitle">Your presence is the greatest gift. If you'd like to bless us with something special, here are a few ideas. Once you select an item, it will be reserved for you.</p>
+
+            <div id="registry-list" class="registry-grid">
+                <p class="registry-loading">Loading gifts...</p>
+            </div>
+
+            <div class="registry-back">
+                <a href="index.html" class="cta-button">Back to Main Page</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Claim Confirmation Modal -->
+    <div class="claim-modal" id="claim-modal">
+        <div class="claim-modal-content">
+            <h3>Claim this gift?</h3>
+            <p id="claim-modal-text">Are you sure you want to claim this item?</p>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="claim-cancel">Cancel</button>
+                <button class="confirm-btn" id="claim-confirm">Yes, I'll get this</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/registry.js"></script>
+</body>
+
+</html>

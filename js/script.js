@@ -36,15 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        Countdown Timer
        ========================================================================== */
-    // Set wedding date here (Year, Month (0-indexed so 14=November), Day, Hour, Min)
-    const weddingDate = new Date(2026, 10, 14, 15, 0, 0).getTime();
+    const weddingDate = new Date(2026, 10, 14, 17, 0, 0).getTime();
 
     const updateCountdown = () => {
         const now = new Date().getTime();
         const distance = weddingDate - now;
 
         if (distance < 0) {
-            // Wedding has passed naturally
             document.querySelector('.countdown-container').innerHTML = '<h2>Happily Married!</h2>';
             return;
         }
@@ -60,10 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
     };
 
-    // Update countdown every second
     setInterval(updateCountdown, 1000);
-    updateCountdown(); // Initial call
-
+    updateCountdown();
 
     /* ==========================================================================
        Intersection Observer for Fade-In Animations
@@ -77,12 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const appearOnScroll = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Stop observing once visible
-            }
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
         });
     }, appearOptions);
 
@@ -91,21 +84,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       RSVP Form Handling (Formspree fallback/UI logic)
+       Story Paragraph Divider
+       ========================================================================== */
+    const storyRight = document.querySelector('.story-right');
+    if (storyRight) {
+        const paragraphs = storyRight.querySelectorAll('p');
+        if (paragraphs.length >= 2) {
+            const divider = document.createElement('div');
+            divider.className = 'story-divider';
+            paragraphs[0].after(divider);
+        }
+    }
+
+    /* ==========================================================================
+       FAQ Accordion
+       ========================================================================== */
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            faqItems.forEach(other => {
+                if (other !== item) other.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        });
+    });
+
+    /* ==========================================================================
+       RSVP Form Handling
        ========================================================================== */
     const rsvpForm = document.getElementById('rsvp-form');
     const formMessage = document.getElementById('form-message');
     const guestsGroup = document.getElementById('guests-group');
     const attendanceSelect = document.getElementById('attendance');
 
-    // Show/hide guests based on attendance
-    attendanceSelect.addEventListener('change', (e) => {
-        if (e.target.value === 'Regretfully Decline') {
-            guestsGroup.style.display = 'none';
-        } else {
-            guestsGroup.style.display = 'block';
-        }
-    });
+    if (attendanceSelect) {
+        attendanceSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'Regretfully Decline') {
+                guestsGroup.style.display = 'none';
+            } else {
+                guestsGroup.style.display = 'block';
+            }
+        });
+    }
 
     if (rsvpForm) {
         rsvpForm.addEventListener("submit", async function (event) {
@@ -123,9 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(event.target.action, {
                     method: rsvpForm.method,
                     body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
@@ -147,97 +166,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    /* ==========================================================================
-       Gift Registry (Firebase)
-       ========================================================================== */
-    const registryList = document.getElementById('registry-list');
-    const claimModal = document.getElementById('claim-modal');
-    const claimConfirm = document.getElementById('claim-confirm');
-    const claimCancel = document.getElementById('claim-cancel');
-    const claimModalText = document.getElementById('claim-modal-text');
-    let currentClaimId = null;
-
-    // Wait for Firebase to initialize
-    function initRegistry() {
-        if (!window.firebaseDB) {
-            setTimeout(initRegistry, 100);
-            return;
-        }
-
-        const db = window.firebaseDB;
-        const registryRef = window.firebaseRef(db, 'registry');
-
-        // Listen for real-time updates
-        window.firebaseOnValue(registryRef, (snapshot) => {
-            const items = snapshot.val();
-            renderRegistry(items);
-        });
-    }
-
-    function renderRegistry(items) {
-        if (!items) {
-            registryList.innerHTML = '<p class="registry-loading">No items available yet.</p>';
-            return;
-        }
-
-        registryList.innerHTML = '';
-        let hasAvailable = false;
-
-        Object.keys(items).forEach(key => {
-            const item = items[key];
-            if (item.claimed) return; // Don't show claimed items
-
-            hasAvailable = true;
-            const card = document.createElement('div');
-            card.className = 'registry-item';
-            card.innerHTML = `
-                <h4>${item.name}</h4>
-                <p>${item.description || ''}</p>
-                <button class="claim-btn" data-id="${key}" data-name="${item.name}">I'll get this</button>
-            `;
-            registryList.appendChild(card);
-        });
-
-        if (!hasAvailable) {
-            registryList.innerHTML = '<p class="registry-loading">All gifts have been claimed! Consider contributing to our honeymoon fund below.</p>';
-        }
-
-        // Attach click handlers to claim buttons
-        document.querySelectorAll('.claim-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                currentClaimId = e.target.dataset.id;
-                claimModalText.textContent = `Are you sure you want to claim "${e.target.dataset.name}"?`;
-                claimModal.classList.add('active');
-            });
-        });
-    }
-
-    // Modal handlers
-    claimCancel.addEventListener('click', () => {
-        claimModal.classList.remove('active');
-        currentClaimId = null;
-    });
-
-    claimConfirm.addEventListener('click', () => {
-        if (!currentClaimId || !window.firebaseDB) return;
-
-        const db = window.firebaseDB;
-        const itemRef = window.firebaseRef(db, `registry/${currentClaimId}`);
-        window.firebaseUpdate(itemRef, { claimed: true });
-
-        claimModal.classList.remove('active');
-        currentClaimId = null;
-    });
-
-    // Close modal on backdrop click
-    claimModal.addEventListener('click', (e) => {
-        if (e.target === claimModal) {
-            claimModal.classList.remove('active');
-            currentClaimId = null;
-        }
-    });
-
-    initRegistry();
 
 });

@@ -381,6 +381,18 @@ a {
     line-height: 1.8;
     color: #fff;
     margin-bottom: 1.5rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.story-divider {
+    max-width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 1.5rem 0;
+}
+
+.story-left h2 {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
 /* ==========================================================================
@@ -443,6 +455,165 @@ a {
 .details-block p {
     font-size: 1rem;
     line-height: 1.8;
+    color: var(--clr-text-light);
+}
+
+.details-block .map-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--clr-accent);
+    border-bottom: 1px solid var(--clr-accent);
+    padding-bottom: 2px;
+    transition: var(--transition);
+}
+
+.details-block .map-link:hover {
+    color: var(--clr-text);
+    border-color: var(--clr-text);
+}
+
+.dress-code-note {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--clr-text-light);
+}
+
+.colour-palette {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.colour-swatch {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    cursor: default;
+}
+
+.colour-swatch:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.accommodation-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.accommodation-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.accommodation-list li:last-child {
+    border-bottom: none;
+}
+
+.accommodation-list li strong {
+    font-size: 1rem;
+    color: var(--clr-text);
+}
+
+.accommodation-list li span {
+    font-size: 0.85rem;
+    color: var(--clr-text-light);
+}
+
+.accommodation-list li .map-link {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--clr-accent);
+    border-bottom: 1px solid var(--clr-accent);
+    padding-bottom: 1px;
+    align-self: flex-start;
+    transition: var(--transition);
+}
+
+.accommodation-list li .map-link:hover {
+    color: var(--clr-text);
+    border-color: var(--clr-text);
+}
+
+/* ==========================================================================
+   FAQ Section
+   ========================================================================== */
+.faq {
+    padding: var(--section-pad);
+    background-color: var(--clr-bg);
+}
+
+.faq-list {
+    max-width: 700px;
+    margin: 3rem auto 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.faq-item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--clr-text);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--clr-accent);
+    transition: var(--transition);
+}
+
+.faq-item.active .faq-question::after {
+    content: '−';
+}
+
+.faq-question:hover {
+    color: var(--clr-accent);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding-bottom: 1.5rem;
+}
+
+.faq-answer p {
+    font-size: 0.95rem;
+    line-height: 1.7;
     color: var(--clr-text-light);
 }
 
@@ -521,7 +692,7 @@ a {
 
 .honeymoon-fund {
     text-align: center;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem;
     background: #fff;
     border-radius: 12px;
     box-shadow: var(--shadow-soft);
@@ -536,7 +707,39 @@ a {
 
 .honeymoon-fund p {
     max-width: 600px;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 1.5rem auto;
+}
+
+.bank-details {
+    display: inline-block;
+    text-align: left;
+    background: var(--clr-bg);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+}
+
+.bank-details p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--clr-text);
+}
+
+.bank-details p strong {
+    color: var(--clr-text);
+    min-width: 140px;
+    display: inline-block;
+}
+
+/* Registry page specific */
+.registry-page {
+    padding-top: 120px;
+    min-height: 100vh;
+}
+
+.registry-back {
+    text-align: center;
+    margin-top: 3rem;
 }
 
 /* Claimed confirmation modal */
