@@ -26,7 +26,7 @@
     --shadow-hover: 0 15px 40px rgba(44, 62, 80, 0.1);
 
     /* Spacing */
-    --section-pad:20px 0;
+    --section-pad: 2rem 0;
 }
 
 /* ==========================================================================
@@ -338,6 +338,8 @@ a {
     position: absolute;
     inset: 0;
     z-index: 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .story-bg img {
@@ -409,7 +411,7 @@ a {
     font-size: 3rem;
     font-weight: 400;
     letter-spacing: 3px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: var(--clr-text);
     text-transform: uppercase;
 }
@@ -434,7 +436,7 @@ a {
 }
 
 .details-block {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
@@ -686,7 +688,7 @@ a {
 
 .honeymoon-fund {
     text-align: center;
-    padding: 2rem 2rem;
+    padding: 3rem 2rem;
     background: #fff;
     border-radius: 12px;
     box-shadow: var(--shadow-soft);
@@ -960,7 +962,7 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem 0;
+    padding: 1rem 0;
     background-color: var(--clr-bg);
 }
 
