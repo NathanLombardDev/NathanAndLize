@@ -2,18 +2,18 @@
    CSS Variables & Design Tokens
    ========================================================================== */
 :root {
-    /* Color Palette */
-    --clr-bg: #D2CBC1;
-    /* Light warm neutral background */
-    --clr-text: #222217;
-    /* Deep charcoal for primary text */
-    --clr-text-light: #858666;
-    /* Muted olive for secondary text */
-    --clr-accent: #4D5038;
-    /* Olive/earth accent */
-    --clr-accent-hover: #858666;
-    --clr-gold: #D4AF37;
-    /* Keep subtle gold accents */
+    /* Color Palette — muted, desaturated to complement B&W photography */
+    --clr-bg: #E8E4E0;
+    /* Warm light grey, less yellow than before */
+    --clr-text: #1a1a1a;
+    /* Near black for strong contrast */
+    --clr-text-light: #6b6b6b;
+    /* Neutral grey for secondary text */
+    --clr-accent: #3d3d3d;
+    /* Dark charcoal accent instead of olive */
+    --clr-accent-hover: #555555;
+    --clr-gold: #9e9e9e;
+    /* Muted silver instead of gold — matches B&W */
     --clr-white: #ffffff;
 
     /* Typography */
@@ -22,8 +22,8 @@
 
     /* Transitions & Shadows */
     --transition: all 0.3s ease;
-    --shadow-soft: 0 10px 30px rgba(44, 62, 80, 0.05);
-    --shadow-hover: 0 15px 40px rgba(44, 62, 80, 0.1);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
 
     /* Spacing */
     --section-pad: 2rem 0;
@@ -116,7 +116,7 @@ a {
 }
 
 .navbar.scrolled {
-    background-color: rgba(253, 251, 247, 0.95);
+    background-color: rgba(232, 228, 224, 0.95);
     backdrop-filter: blur(10px);
     padding: 1rem 0;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
@@ -228,6 +228,7 @@ a {
     background: url('../images/wedding.jpg') center 60% / cover no-repeat;
     background-color: #111;
     overflow: hidden;
+    margin-bottom: 2rem;
 }
 
 .hero-content {
@@ -444,7 +445,7 @@ a {
     font-family: var(--font-heading);
     font-size: 2.2rem;
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
     color: var(--clr-text);
 }
 
@@ -972,8 +973,8 @@ select {
     flex: 1;
     max-width: 200px;
     height: 1px;
-    background-color: var(--clr-accent);
-    opacity: 0.4;
+    background-color: var(--clr-text);
+    opacity: 0.2;
 }
 
 .section-divider::before {
